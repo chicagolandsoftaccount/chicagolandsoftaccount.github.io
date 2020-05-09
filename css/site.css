@@ -545,12 +545,12 @@ a:hover:not(.jumboButtonClass, .nav-link) {
     min-height: 960px;
 }
 
-.bodyTextLink, #emailLink {
+.bodyTextLink, #emailLink, .blogEntry {
     color: #3d7e9a!important;
     text-decoration: none!important;
 }
 
-.bodyTextLink:hover, #emailLink:hover {
+.bodyTextLink:hover, #emailLink:hover, .blogEntry:hover {
     color: #6baac4!important;
     text-decoration: none!important;
     cursor: pointer;
@@ -561,5 +561,9 @@ a:hover:not(.jumboButtonClass, .nav-link) {
 }
 
 .ulNoPoints > li {
+    list-style: none;
+}
+
+.blogEntry {
     list-style: none;
 }
