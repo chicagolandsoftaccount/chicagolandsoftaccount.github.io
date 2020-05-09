@@ -45,6 +45,7 @@ footer {
 
 .titleListLeft, .titleListRight {
     box-shadow: 0 4px 6px -6px black;
+    list-style: none;
 }
 
 footer > p:not(.footerGlyph) {
@@ -538,4 +539,8 @@ a:hover:not(.jumboButtonClass, .nav-link) {
     color: #3d7e9a;
     font-weight: 400;
     text-align: left;
+}
+
+#mainId {
+    min-height: 960px;
 }
