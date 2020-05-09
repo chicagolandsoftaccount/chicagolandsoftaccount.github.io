@@ -559,3 +559,7 @@ a:hover:not(.jumboButtonClass, .nav-link) {
 #emLink {
     cursor: pointer;
 }
+
+.ulNoPoints > li {
+    list-style: none;
+}
