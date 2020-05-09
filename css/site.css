@@ -1,0 +1,533 @@
+/*
+
+    examples:
+    font-family: 'IBM Plex Mono', monospace;
+
+    font-family: 'IBM Plex Sans Condensed', sans-serif;
+
+    font-family: 'IBM Plex Sans', sans-serif;
+
+    font-family: 'IBM Plex Serif', serif;
+
+
+*/
+
+*:not(.footerGlyph) {
+    font-family: 'IBM Plex Sans', sans-serif!important;
+}
+
+.footerGlyph {
+    font-size: 36px;
+    padding: 5px;
+}
+
+.pageTitle {
+    font-size: 48px;
+}
+
+/*html {
+    overflow-x: hidden;
+}*/
+
+.banner-img {
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 0%!important; /*used to be 1%*/
+    background-color: #000000;
+}
+
+
+footer {
+    margin: auto;
+    text-align: center;
+    padding-bottom: 1%;    
+}
+
+.titleListLeft, .titleListRight {
+    box-shadow: 0 4px 6px -6px black;
+}
+
+footer > p:not(.footerGlyph) {
+    font-size: 14px;
+}
+
+#leftFloat {
+    width: 203px;
+    float: left;
+    display: inline;
+    list-style-type: none;
+    line-height: 3rem;
+}
+
+#leftFloat, #rightFloat {
+    margin-top: 10px;
+}
+
+.sidebarListSmall {
+    list-style-type: none;
+    height: 150px;
+    border: 1px solid #808080;
+    padding: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+
+.sidebarList {
+    list-style-type: none;
+    height: 340px;
+    border: 1px solid #808080;
+    padding-left: 0;
+    margin-right: 3px;
+    margin-left: 3px;
+    box-shadow: 0 8px 6px -6px black;
+}
+
+.sidebarList, .sidebarListSmall {
+    background-color: #e7e7e7;
+}
+
+.recentProjects {
+    margin-top: 32px;
+}
+
+.sidebarList > li {
+    padding-left: 8px;
+}
+
+.sidebarListSmall > li {
+    padding-left: 8px;
+}
+
+.sidebarList, .sidebarListSmall {
+    border-collapse: collapse!important;
+}
+
+.leftList {
+    border-radius: 0px 0px 10px 0px!important;
+}
+
+.rightList {
+    border-radius: 0px 0px 0px 10px!important;
+}
+
+.sidebarTitle {
+    background-color: #000000;
+    color: #fdfdfd;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-bottom: 5px solid #3d7e9a;
+}
+
+
+.sideTitleDiv {
+    padding-left: 8px;
+}
+
+
+#rightFloat {
+    width: 203px;
+    float: right;
+    display: inline;
+    list-style-type: none;
+    line-height: 3rem;
+}
+
+
+.cse .gsc-control-cse, .gsc-control-cse {
+
+    font-family: 'IBM Plex Sans', sans-serif!important;
+    background-color: #000000!important;
+    border: 1px solid #000000!important;
+    padding: 0px;
+
+}
+/*the Google Custom Search bar usually has a "powered by google" image in the background until I do this*/
+html body header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div#navbarSupportedContent.collapse.navbar-collapse form.my-lg-0 div#___gcse_0 div.gsc-control-cse.gsc-control-cse-en div.gsc-control-wrapper-cse form.gsc-search-box.gsc-search-box-tools table.gsc-search-box tbody tr td.gsc-input div#gsc-iw-id1.gsc-input-box table#gs_id50.gstl_50.gsc-input tbody tr td#gs_tti50.gsib_a input#gsc-i-id1.gsc-input {
+    background: transparent!important;
+}
+
+
+
+main {
+    background-color: #f1f1f1;
+}
+
+
+
+html body header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div#navbarSupportedContent.collapse.navbar-collapse form.my-lg-0 div#___gcse_0 div.gsc-control-cse.gsc-control-cse-en div.gsc-control-wrapper-cse form.gsc-search-box.gsc-search-box-tools table.gsc-search-box tbody tr td.gsc-input div#gsc-iw-id1.gsc-input-box{
+    background-color: #fdfdfd!important;
+}
+
+.jumbotronH1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+}
+
+.jumbotron {
+    background-color: #fafafa!important;
+    margin-bottom: 0px!important;
+}
+
+.mainText {
+    padding: 2rem;
+    margin-bottom: 0!important;
+    font-size: 1.2rem;
+    background-color: #fafafa;
+    margin-top: 0;
+}
+
+.lead {
+    margin-bottom: 0;
+    
+}
+
+.jumbotron {
+    padding-left: 2rem!important;
+    padding-right: 2rem!important;
+    padding-top: 2rem!important;
+    padding-bottom: 0px!important;
+}
+
+.sidebarItem:not(sidebarTitle):hover  {
+    background-color: #f1f1f1 ;
+}
+
+
+.sidebarItem > a{
+    color:#3d7e9a;
+    text-decoration: none;
+}
+
+.sidebarItem > a:hover {
+    text-decoration: none;
+    color: #6baac4;
+
+}
+
+
+@media only screen and (max-width: 1024px) {
+    #mainDiv, #mainId {
+        background-color: #fafafa!important;
+    }
+    
+    
+}
+
+@media only screen and (min-width: 992px) {
+    .navbar-brand {
+        visibility: hidden;
+        width: 0px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+        #bannerCLS {
+            display: none;
+            width: 0px;
+            height: 0px;
+        }
+}
+
+@media only screen and (min-width: 992px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 50%;
+    }
+    
+    footer {
+        width: -webkit-calc(50% + 30px);
+        width:    -moz-calc(50% + 30px);
+        width:         calc(50% + 30px);
+    }
+}
+
+
+
+@media only screen and (max-width: 480px) {
+    .banner-img {
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .banner-img {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .banner-img {
+        padding-left: 25%;
+        padding-right: 25%;
+    }
+}
+
+
+@media only screen and (min-width: 600px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 75%;
+    }
+    
+    footer {
+        width: -webkit-calc(75% + 30px);
+        width:    -moz-calc(75% + 30px);
+        width:         calc(75% + 30px);
+    }
+}
+
+@media only screen and (min-width: 900px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 60%;
+    }
+    
+    footer {
+        width: -webkit-calc(60% + 30px);
+        width:    -moz-calc(60% + 30px);
+        width:         calc(60% + 30px);
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 50%;
+    }
+    
+    footer {
+        width: -webkit-calc(50% + 30px);
+        width:    -moz-calc(50% + 30px);
+        width:         calc(50% + 30px);
+    }
+}
+@media only screen and (max-width: 1024px) {
+    #leftFloat {
+        display: none;
+        width: 0px;
+        
+    }
+    #rightFloat {
+        display: none;
+        width: 0px;
+    }
+}
+
+
+@media only screen and (min-width: 1200px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 45%;
+    }
+    
+    footer {
+        width: -webkit-calc(45% + 30px);
+        width:    -moz-calc(45% + 30px);
+        width:         calc(45% + 30px);
+    }
+}
+
+@media only screen and (min-width: 1921px) {
+    .jumbotron, .mainText {
+        margin: auto;
+        width: 40%;
+        font-size: larger;
+    }
+    
+    footer {
+        width: -webkit-calc(40% + 30px);
+        width:    -moz-calc(40% + 30px);
+        width:         calc(40% + 30px);
+        font-size: larger;
+    }
+}
+
+
+#backToTopButton {
+    display: inline-block;
+}
+
+#backToTopButton > a > i {
+    font-size: 14px;
+}
+
+#contactText {
+    font-size: 1.3rem;
+    background-color: #000000;
+    color: #fdfdfd;
+    border-bottom: 5px solid #3d7e9a;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0px!important;
+    box-shadow: 0 4px 6px -6px black;
+    z-index: 2!important;
+    position: relative;
+}
+
+.titleListLeft {
+    padding-left: 0px;
+    margin-left: 2px;
+    width: 215px;
+    margin-bottom: 0;
+    position: relative;
+    top: 11px;
+}
+
+.titleListLeft > li > div {
+    margin-left: 8px;
+}
+
+.titleListRight {
+    padding-left: 0px;
+    margin-right: 2px;
+    width: 215px;
+    margin-bottom: 0px!important;
+    position: relative;
+    top: 11px;
+    right: 14px;
+    z-index: 100;
+}
+
+.titleListRight > li > div {
+    margin-left: 24px;
+}
+
+.secondaryRightSide {
+    position: relative;
+    top: -22px;
+}
+
+.topLeft {
+    height: 300px!important;
+}
+
+.navbar {
+    border-bottom: 5px solid #3d7e9a;
+    box-shadow: 0 4px 6px -6px black;
+}
+
+.fixed-top {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.extraPadding {
+    padding-top: 75px;
+}
+
+
+
+#footerBody {
+    padding-top: 10px;
+    background-color: #e7e7e7;
+    
+    width: -webkit-calc(100% - 30px);
+    width:    -moz-calc(100% - 30px);
+    width:         calc(100% - 30px);
+    margin: auto;
+    box-shadow: 0 8px 6px -6px black;
+    border-radius: 0px 0px 10px 10px!important;
+    border-collapse: collapse!important;
+    border: 1px solid #808080;
+    position: relative;
+    top: -2px;
+    z-index: 1;
+}
+
+#currentNavLink {
+    color: #e7e7e7;
+}
+
+@media only screen and (min-width: 991px){
+    #currentNavLink {
+        display: inline-block;
+        background-color: #1a1a1a;
+        border-bottom: 5px solid #e7e7e7;    
+    }
+}
+
+.jumbotronH1 {
+    color: white;
+    background-color: #000000;
+    border-bottom: 5px solid #3d7e9a;
+    box-shadow: 0 4px 6px -6px black;
+    padding-left: 7px!important;
+}
+
+a:not(.jumboButtonClass, .nav-link) {
+    color: #3d7e9a!important;
+    text-decoration: none!important;
+}
+a:hover:not(.jumboButtonClass, .nav-link) {
+    color: #6baac4!important;
+}
+
+.jumboButtonClass {
+    box-shadow: 0 8px 6px -6px black;
+    background-color: #3d7e9a!important;
+    border-color: #3d7e9a!important;
+    color: #e7e7e7!important;
+}
+
+.jumboButtonClass:hover {
+    background-color: #6baac4!important;
+    border-color: #6baac4!important;
+    color: white!important;
+}
+
+.footerGlyph, .linkClass {
+    color: #3d7e9a!important;
+    text-decoration: none!important;
+}
+
+.footerGlyph:hover, .linkClass:hover {
+    color: #6baac4!important;
+    text-decoration: none!important;
+}
+
+.upToTopArrow, .buttonText, .buttonText > .footerGlyph {
+    color: #e7e7e7!important;
+    font-size: 1.2rem;
+}
+
+.upToTopArrow:hover, .buttonText:hover, .buttonText:hover > .footerGlyph {
+    color: white!important;
+    font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 991px) {
+    .banner-img {
+        padding-top: 0px!important;
+    }
+}
+
+.privacy-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem .5rem;
+    background: #fafafa;
+    z-index: 1030;
+    
+    font-size: 14px;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
+#gdprText {
+    margin: auto;
+    text-align: center;
+}
+
+@media only screen and (min-width: 767px) {
+    #gdprBr {
+        display: none;
+    }
+}
