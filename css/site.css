@@ -544,3 +544,18 @@ a:hover:not(.jumboButtonClass, .nav-link) {
 #mainId {
     min-height: 960px;
 }
+
+.bodyTextLink, #emailLink {
+    color: #3d7e9a!important;
+    text-decoration: none!important;
+}
+
+.bodyTextLink:hover, #emailLink:hover {
+    color: #6baac4!important;
+    text-decoration: none!important;
+    cursor: pointer;
+}
+
+#emLink {
+    cursor: pointer;
+}
