@@ -1,1 +1,28 @@
- 
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>Web Security for Beginners</title>
+  <link>https://hellolifeskills.com/2020/05/02/web-security-for-beginners/</link>
+  <description>If you have a website, or are thinking about making one, you need to keep it secure.</description>
+  <item>
+    <title>Back in Chicago</title>
+    <link>https://chicagolandsoftware.com/pages/back_in_chicago.html</link>
+    <description>I've moved from St. Louis back to Chicago.</description>
+  </item>
+  <item>
+    <title>SIUE Career Fair</title>
+    <link>https://chicagolandsoftware.com/pages/career_fair_2018.html</link>
+    <description>I recently went to my first career fair at SIUE. It lasted for two days. </description>
+  </item>
+  <item>
+    <title>Beginner Information Security Tips</title>
+    <link>https://chicagolandsoftware.com/pages/beginner_information_security_tips.html</link>
+    <description>Here is a list of basic security concepts and tips that are important for users and developers alike. </description>
+  </item>
+  <item>
+    <title>My Trip to China</title>
+    <link>https://chicagolandsoftware.com/pages/trip_to_china.html</link>
+    <description>In 2018, I had the opportunity to study abroad through SIUE's school of business.</description>
+  </item>
+</channel>
+</rss>
