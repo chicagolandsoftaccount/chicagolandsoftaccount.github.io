@@ -403,7 +403,7 @@ html body header nav.navbar.navbar-expand-lg.navbar-dark.bg-dark div#navbarSuppo
 }
 
 .topLeft {
-    height: 300px!important;
+    /*height: 300px!important;*/
 }
 
 .navbar {
