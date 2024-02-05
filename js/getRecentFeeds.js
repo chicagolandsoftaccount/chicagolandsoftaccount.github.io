@@ -1,6 +1,6 @@
 function getRecentArticles() {
     var mydata = JSON.parse(recent_articles);
-    for (i = 0; i < 5; i += 1) {
+    for (i = 0; i < 4; i += 1) {
         var currentNum = i + 1;
         var linkId = "articleLink" + currentNum.toString();
         document.getElementById(linkId).href=mydata[i].link;
