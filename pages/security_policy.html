@@ -23,7 +23,7 @@
         <!--REPLACEME means you need to replace it.
         It's just a template placeholder but shouldn't be in actual pages.-->
         <title>Security Policy and Contact Info</title>
-        <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+        <link rel="shortcut icon" type="image/png" href="../img/favicon.png">
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital@0;1&family=IBM+Plex+Sans+Condensed:ital@0;1&family=IBM+Plex+Sans:ital,wght@0,100;0,400;0,700;1,100;1,400;1,700&family=IBM+Plex+Serif:ital@0;1&display=swap" rel="stylesheet"> 
         <link rel="stylesheet" href="../css/site.css">        
         <script src="../js/countUp.js"></script>
@@ -87,19 +87,7 @@
               <ul class="sidebarList leftList topLeft">
                 
                 <li class="sidebarItem">
-                  <a href="https://hellolifeskills.com/">Hello, Life Skills!</a>
-                </li>
-                <li class="sidebarItem">
-                  <a href="https://smartfinancialresearch.com/">Smart Financial Research</a>
-                </li>
-                <li class="sidebarItem"> 
-                  <a href="https://freecodingtutorials.com/">Free Coding Tutorials</a>
-                </li>
-                <li class="sidebarItem">
                   <a href="https://saintlouissoftware.com/">Saint Louis Software</a>
-                </li>
-                <li class="sidebarItem">
-                  <a href="https://alans100daysofcode.com/">100 Days of Code</a>
                 </li>
                 <li class="sidebarItem">
                   <a href="https://github.com/0x416c616e">GitHub Profile</a>
@@ -133,9 +121,6 @@
                 <li class="sidebarItem">
                   <a href="security_policy.html">Security Contact Info</a>
                 </li>
-                <li class="sidebarItem">
-                  <a href="../rss/rss.xml">RSS</a>
-                </li>
               </ul>
             </nav>
           </aside>
@@ -158,9 +143,6 @@
               </li>
               <li class="sidebarItem" id="article4">
                 <a id="articleLink4" href="javascript:void(0);">Loading...</a>
-              </li>
-              <li class="sidebarItem" id="article5">
-                <a id="articleLink5" href="javascript:void(0);">Loading...</a>
               </li>
             </ul>
             <ul class="titleListRight">
@@ -187,9 +169,6 @@
               <li class="sidebarItem">
                 <a id="projectLink6" href="javascript:void(0);">Loading...</a>
               </li>
-              <li class="sidebarItem">
-                <a id="projectLink7" href="javascript:void(0);">Loading...</a>
-              </li>
               
             </ul>
             </nav>
@@ -198,14 +177,9 @@
             <div id="mainDiv">
               <div class="jumbotron">
                   <h1 class="jumbotronH1"><b>Security Policy and Contact Info</b></h1>
+                 <p>Hi there! If you find a security issue with my software projects or websites, please let me know! I am willing to work with security researchers. I know you're not doing anything bad. However, please practice responsible disclosure by giving me ample time to fix it before any public disclosure.</p>
+                  <p>Please use the contact button at the bottom of the page.</p><br><br>
                 </div>
-              <div class="mainText justify-content-center">
-                  <a id="anchor1"></a>
-                  <p>Hi there! If you find a security issue with my software projects or websites, please let me know! I am willing to work with security researchers. I know you're not doing anything bad. However, please practice <a class="bodyTextLink" href="https://en.wikipedia.org/wiki/Responsible_disclosure">responsible disclosure</a> by giving me ample time to fix it before any public disclosure.</p>
-                  <p>Seeing as how I am currently a CS student, I currently do not offer any monetary rewards for security stuff. Maybe in the future, when I make more money, I might offer a more legit bug bounty program. But for the time being, I will just give you my thanks, vouch for you, and you can use me as a reference. Maybe, if you want, I can add a section to this page to have a 'thank you' list.</p>
-                  <p>The best ways to contact me are via <a data-toggle="modal" data-target="#exampleModal" id="emailLink">email</a>, the contact form <a class="bodyTextLink" href="contact.html">here</a>, or on GitHub <a class="bodyTextLink" href="https://github.com/0x416c616e/contact_me">here.</a></p>
-                  <p>I know many infosec people use Twitter, but I stopped using it because of the constant negativity.</p>
-              </div>
             </div>
             
             <footer id="footerId">
@@ -232,7 +206,7 @@
                   </div>
                   <div class="modal-body" id="mMod">
                     <p class="text-center">Please send an email to:<br>
-                      <img src="../img/send.png"><br>Or use the contact form <a id="contactHere" class="bodyTextLink" href="contact.html">here</a>
+                      <img src="../img/send.png">
                     </p>
                   </div>
                     <div class="modal-footer">
@@ -245,9 +219,6 @@
                 document.getElementById("year").innerHTML = new Date().getFullYear();    
             </script>
             <script src="../js/smoothAnchorScroll.js"></script>
-            <script>
-              animateValue("numId1", 0, 37810, 5000);
-            </script>
             <script>
               getRecentArticles();
               getRecentProjects();
