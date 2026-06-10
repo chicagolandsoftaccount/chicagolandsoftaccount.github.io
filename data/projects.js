@@ -6,7 +6,8 @@
  *   { name, featured, blurb, highlights[], tags[], link, linkLabel, note, image, icon, accent }
  *   - featured: true   → rendered as a large, full-width showcase card
  *   - link: null       → no public link (renders the `note`/contact CTA instead)
- *   - image: path|null → optional screenshot; cards without one use an icon tile
+ *   - image: path|null → screenshot; featured cards show it as a top banner,
+ *                        regular cards as a top thumbnail. Optimized WebP in img/projects/.
  *   - accent           → icon-tile color: '' (blue, default), blue, violet, green, amber, rose
  */
 window.PROJECTS = [
@@ -21,9 +22,10 @@ window.PROJECTS = [
       "React 19 + Vite single-page app shipping to web and Android (via Capacitor) from one codebase, backed by an Express 5 + PostgreSQL API with cron-driven data pipelines.",
       "Production-grade security & reliability: argon2id + JWT auth, role-based authorization, Helmet/CSRF/WAF rules, rate limiting, automated backups with replication, logging/monitoring, and a ~900-test suite."
     ],
-    tags: ["React", "Vite", "Capacitor", "Node.js", "Express", "PostgreSQL", "OpenAI", "REST APIs", "Cron", "JWT / argon2"],
+    tags: ["React", "Vite", "Capacitor", "Node.js", "Express", "PostgreSQL", "OpenAI", "REST APIs", "Cron", "JWT / argon2", "Quantitative Analysis", "Recharts", "Data Visualization", "Fintech", "Puppeteer", "CRUD Systems", "Front-End", "Back-End", "Deployment"],
     link: null,
     note: "Private platform — get in touch for a walkthrough or demo.",
+    image: "img/projects/ccr.webp",
     icon: "fa-solid fa-chart-line",
     accent: ""
   },
@@ -33,7 +35,7 @@ window.PROJECTS = [
     blurb:
       "A proprietary healthcare web application supporting data entry, data aggregation, on-demand reports, dashboards, administration, resident management, medication tracking, and incident tracking across 100+ skilled nursing facilities.",
     highlights: [],
-    tags: ["Java", "Spring Boot", "Angular", "T-SQL", "AWS"],
+    tags: ["Java", "Spring Boot", "Angular", "T-SQL", "AWS", "Hibernate", "SOAP APIs", "REST APIs", "CRUD Systems", "Stored Procedures", "HQL", "Front-End", "Back-End", "Deployment"],
     link: null,
     note: "Proprietary — built for Legacy Healthcare.",
     icon: "fa-solid fa-notes-medical",
@@ -45,7 +47,7 @@ window.PROJECTS = [
     blurb:
       "A healthcare web app for clinical and operational data entry, aggregation, on-demand reporting, dashboards, and resident/medication/incident tracking — built on a LAMP-style XAMPP stack.",
     highlights: [],
-    tags: ["PHP", "MySQL", "Apache", "JavaScript", "XAMPP"],
+    tags: ["PHP", "MySQL", "Apache", "JavaScript", "XAMPP", "Maintaining Legacy Code"],
     link: null,
     note: "Proprietary — built for Legacy Healthcare.",
     icon: "fa-solid fa-gauge-high",
@@ -57,9 +59,10 @@ window.PROJECTS = [
     blurb:
       "An AI workout planner: describe the workout you want in plain English and it infers the muscle groups involved, queries a PostgreSQL exercise database, and builds a tailored routine you can save and share.",
     highlights: [],
-    tags: ["React", "Node.js", "Express", "PostgreSQL", "OpenAI", "Netlify", "Heroku"],
+    tags: ["React", "Node.js", "Express", "PostgreSQL", "OpenAI", "Netlify", "Heroku", "REST API", "Front-End", "Back-End", "Deployment"],
     link: "https://gainzplanner.ai/",
     linkLabel: "Visit site",
+    image: "img/projects/gainzplanner.webp",
     icon: "fa-solid fa-dumbbell",
     accent: "violet"
   },
@@ -67,11 +70,12 @@ window.PROJECTS = [
     name: "WeVote / WeConnect",
     featured: false,
     blurb:
-      "Open-source contributions to a nonpartisan voter-information nonprofit reaching ~150K users — full-stack feature work and testing across a user-facing app and an internal admin app.",
+      "Open-source contributions to WeVote, a nonpartisan nonprofit focused on increasing voter awareness (~150K users) — full-stack feature work and testing across a user-facing app and an internal admin app.",
     highlights: [],
-    tags: ["React", "Python", "Django", "Node.js", "PostgreSQL", "Open Source"],
+    tags: ["React", "Python", "Django", "Node.js", "PostgreSQL", "Open Source", "Express", "Linting", "Front-End", "Back-End"],
     link: "https://wevote.us/",
     linkLabel: "About WeVote",
+    image: "img/projects/wevote.webp",
     icon: "fa-solid fa-check-to-slot",
     accent: "blue"
   },
@@ -81,8 +85,9 @@ window.PROJECTS = [
     blurb:
       "Scheduled report pipelines that generate and email operational and clinical reports for Legacy Healthcare's skilled-nursing operations, and investment-research reports for Chicago Capital Research — with data warehousing, templating, and automated delivery.",
     highlights: [],
-    tags: ["JasperReports", "Apache POI", "T-SQL", "Node.js", "Cron / Quartz", "Email"],
+    tags: ["JasperReports", "Jasper Server", "Apache POI", "XLSX.js", "Nodemailer", "T-SQL", "PostgreSQL", "ORM", "Java", "JavaScript", "Node.js", "Puppeteer", "Cron / Quartz", "Email"],
     link: null,
+    image: "img/projects/report_automation.webp",
     icon: "fa-solid fa-file-invoice",
     accent: "amber"
   },
@@ -92,8 +97,9 @@ window.PROJECTS = [
     blurb:
       "Background job systems built on cron and Quartz for API integrations, notifications, report generation, and self-healing checks that detect and correct bad data automatically.",
     highlights: [],
-    tags: ["Quartz", "Cron", "Node.js", "Java", "REST APIs"],
+    tags: ["Quartz", "Cron", "node-cron", "Node.js", "Java", "JavaScript", "PowerShell", "Bash", "REST APIs"],
     link: null,
+    image: "img/projects/task_scheduling.webp",
     icon: "fa-solid fa-clock",
     accent: "green"
   },
@@ -104,9 +110,9 @@ window.PROJECTS = [
       "A browser-based 2D MMORPG engine with tile-based movement and collision detection, plus a companion desktop level editor that visually edits JSON map data.",
     highlights: [],
     tags: ["Angular", "Java", "Spring Boot", "PostgreSQL", "JavaFX", "JDBC"],
-    link: "img/editor.png",
-    linkLabel: "Level editor screenshot",
-    image: "img/editor.png",
+    link: "https://github.com/0x416c616e/2drpggamengine",
+    linkLabel: "View on GitHub",
+    image: "img/projects/mmo_engine.webp",
     icon: "fa-solid fa-gamepad",
     accent: "rose"
   },
@@ -119,6 +125,7 @@ window.PROJECTS = [
     tags: ["Java", "Language Design", "Interpreters", "IDE"],
     link: "https://github.com/0x416c616e/AdiaScript",
     linkLabel: "View on GitHub",
+    image: "img/projects/adiascript.webp",
     icon: "fa-solid fa-terminal",
     accent: "amber"
   },
@@ -128,8 +135,9 @@ window.PROJECTS = [
     blurb:
       "A React soundboard app wrapped for Android with Capacitor — a fun personal project I built for my girlfriend to play custom sound clips on their phone.",
     highlights: [],
-    tags: ["React", "Vite", "Capacitor", "Android"],
+    tags: ["React", "Vite", "Capacitor", "Android", "JavaScript"],
     link: null,
+    image: "img/projects/soundboard.webp",
     icon: "fa-solid fa-music",
     accent: "violet"
   },
@@ -142,8 +150,22 @@ window.PROJECTS = [
     tags: ["Technical Writing", "Education", "Full Stack"],
     link: "https://freecodingtutorials.com/",
     linkLabel: "Visit site",
+    image: "img/projects/free_coding_tutorials.webp",
     icon: "fa-solid fa-book-open",
     accent: "rose"
+  },
+  {
+    name: "EZcrypt",
+    featured: false,
+    blurb:
+      "A desktop file-encryption tool with a simple GUI — encrypts and decrypts files using Blowfish so you can protect sensitive data with a standalone Java app.",
+    highlights: [],
+    tags: ["Java", "Desktop App", "JavaFX", "Encryption", "Security", "Privacy"],
+    link: "https://github.com/0x416c616e/ezcrypt",
+    linkLabel: "View on GitHub",
+    image: "img/projects/ezcrypt.webp",
+    icon: "fa-solid fa-lock",
+    accent: "amber"
   },
   {
     name: "Intro to Security",
@@ -154,6 +176,7 @@ window.PROJECTS = [
     tags: ["Information Security", "OWASP", "Technical Writing"],
     link: "https://github.com/0x416c616e/intro_to_security",
     linkLabel: "View on GitHub",
+    image: "img/projects/intro_to_security.webp",
     icon: "fa-solid fa-shield-halved",
     accent: "blue"
   },
@@ -166,6 +189,7 @@ window.PROJECTS = [
     tags: ["Security", "Penetration Testing", "Python", "Bash"],
     link: null,
     note: "Details available on request.",
+    image: "img/projects/security_tools.webp",
     icon: "fa-solid fa-bug",
     accent: "green"
   }

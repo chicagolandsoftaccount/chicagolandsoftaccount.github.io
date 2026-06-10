@@ -100,18 +100,21 @@
       var tagHtml = '<div class="tags">' + tags(x.tags) + '</div>';
       var foot = projectFooter(x);
 
+      var imgBlock = x.image
+        ? '<div class="' + (x.featured ? 'proj-banner' : 'proj-thumb') + '">' +
+            '<img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
+        : '';
+
       if (x.featured) {
-        // Two-column showcase: blurb + tags on the left, highlights (or a
-        // screenshot, if provided) on the right.
-        var rightCol = x.image
-          ? '<div class="proj-shot"><img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
-          : bullets;
+        // Full-width screenshot banner, then a two-column body
+        // (blurb + tags on the left, highlights on the right).
         return '' +
           '<article class="proj-card featured reveal" id="proj-' + i + '">' +
+            imgBlock +
             head +
             '<div class="proj-body">' +
               '<div>' + blurb + tagHtml + '</div>' +
-              '<div>' + rightCol + '</div>' +
+              '<div>' + bullets + '</div>' +
             '</div>' +
             foot +
           '</article>';
@@ -120,7 +123,7 @@
       var delay = (i % 2) ? ' d1' : '';
       return '' +
         '<article class="proj-card reveal' + delay + '" id="proj-' + i + '">' +
-          head + blurb + bullets + tagHtml + foot +
+          imgBlock + head + blurb + bullets + tagHtml + foot +
         '</article>';
     }).join('');
   }

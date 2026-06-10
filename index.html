@@ -206,6 +206,15 @@
 
   <button class="to-top" id="toTop" type="button" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 
+  <!-- Image lightbox (click a project screenshot to enlarge) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+    <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="">
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+  </div>
+
   <!-- Content data (globals) -->
   <script src="data/profile.js"></script>
   <script src="data/experience.js"></script>
@@ -215,6 +224,7 @@
   <script src="js/render.js"></script>
   <script src="js/router.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/lightbox.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

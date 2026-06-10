@@ -24,7 +24,7 @@ window.EXPERIENCE = [
     tags: ["React", "Node.js", "Express", "PostgreSQL", "OpenAI", "REST APIs", "Capacitor"]
   },
   {
-    role: "Application & Reports Developer — MTS II → Principal MTS",
+    role: "Application & Reports Developer",
     org: "Legacy Healthcare",
     location: "Skokie, IL",
     start: "2021",
@@ -48,7 +48,7 @@ window.EXPERIENCE = [
     end: "Present",
     kind: "volunteer",
     summary:
-      "Contributing full-stack to a nonpartisan voter-information nonprofit reaching roughly 150,000 users.",
+      "Contributing full-stack to WeVote, a nonpartisan nonprofit focused on increasing voter awareness, reaching roughly 150,000 users.",
     highlights: [
       "Develop, maintain, and test two web applications: WeVote (user-facing) and WeConnect (internal).",
       "Write front-end and back-end code across React, JavaScript, Python/Django, Node/Express, and PostgreSQL.",
