@@ -126,7 +126,7 @@ window.PROJECTS = [
     name: "Soundboard",
     featured: false,
     blurb:
-      "A React soundboard app wrapped for Android with Capacitor — a fun personal project I built for my girlfriend to play custom sound clips on her phone.",
+      "A React soundboard app wrapped for Android with Capacitor — a fun personal project I built for my girlfriend to play custom sound clips on their phone.",
     highlights: [],
     tags: ["React", "Vite", "Capacitor", "Android"],
     link: null,
