@@ -30,6 +30,30 @@ window.PROJECTS = [
     accent: ""
   },
   {
+    name: "MTS2 — Metrics & Tracking System 2",
+    featured: false,
+    blurb:
+      "A proprietary healthcare web application supporting data entry, data aggregation, on-demand reports, dashboards, administration, resident management, medication tracking, and incident tracking across 100+ skilled nursing facilities.",
+    highlights: [],
+    tags: ["Java", "Spring Boot", "Angular", "T-SQL", "AWS", "Hibernate", "SOAP APIs", "REST APIs", "CRUD Systems", "Stored Procedures", "HQL", "Front-End", "Back-End", "Deployment"],
+    link: null,
+    note: "Proprietary — built for Legacy Healthcare.",
+    icon: "fa-solid fa-notes-medical",
+    accent: "blue"
+  },
+  {
+    name: "PMTS — Performance Metrics Tracking System",
+    featured: false,
+    blurb:
+      "A healthcare web app for clinical and operational data entry, aggregation, on-demand reporting, dashboards, and resident/medication/incident tracking — built on a LAMP-style XAMPP stack.",
+    highlights: [],
+    tags: ["PHP", "MySQL", "Apache", "JavaScript", "XAMPP", "Maintaining Legacy Code"],
+    link: null,
+    note: "Proprietary — built for Legacy Healthcare.",
+    icon: "fa-solid fa-gauge-high",
+    accent: "green"
+  },
+  {
     name: "Email Outreach Agent",
     featured: false,
     blurb:
@@ -54,30 +78,6 @@ window.PROJECTS = [
     image: "img/projects/ai_scribble_art_generator.webp",
     icon: "fa-solid fa-paintbrush",
     accent: "rose"
-  },
-  {
-    name: "MTS2 — Metrics & Tracking System 2",
-    featured: false,
-    blurb:
-      "A proprietary healthcare web application supporting data entry, data aggregation, on-demand reports, dashboards, administration, resident management, medication tracking, and incident tracking across 100+ skilled nursing facilities.",
-    highlights: [],
-    tags: ["Java", "Spring Boot", "Angular", "T-SQL", "AWS", "Hibernate", "SOAP APIs", "REST APIs", "CRUD Systems", "Stored Procedures", "HQL", "Front-End", "Back-End", "Deployment"],
-    link: null,
-    note: "Proprietary — built for Legacy Healthcare.",
-    icon: "fa-solid fa-notes-medical",
-    accent: "blue"
-  },
-  {
-    name: "PMTS — Performance Metrics Tracking System",
-    featured: false,
-    blurb:
-      "A healthcare web app for clinical and operational data entry, aggregation, on-demand reporting, dashboards, and resident/medication/incident tracking — built on a LAMP-style XAMPP stack.",
-    highlights: [],
-    tags: ["PHP", "MySQL", "Apache", "JavaScript", "XAMPP", "Maintaining Legacy Code"],
-    link: null,
-    note: "Proprietary — built for Legacy Healthcare.",
-    icon: "fa-solid fa-gauge-high",
-    accent: "green"
   },
   {
     name: "GainzPlanner",
