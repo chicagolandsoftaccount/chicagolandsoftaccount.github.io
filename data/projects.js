@@ -30,6 +30,32 @@ window.PROJECTS = [
     accent: ""
   },
   {
+    name: "Email Outreach Agent",
+    featured: false,
+    blurb:
+      "An autonomous, goal-driven outreach engine that automates campaigns relating to communication, leads, business, and networking. You define a goal in the database, and it discovers organizations via web search and crawling, uses an AI API to assess the legitimacy and relevance of content parsed from scraped pages, drafts personalized emails, and sends them under strict compliance controls — surfacing only the replies that actually need a human.",
+    highlights: [],
+    tags: ["Node.js", "Express", "PostgreSQL", "Puppeteer", "Anthropic Claude API"],
+    link: null,
+    note: "Private project — get in touch for a walkthrough or demo.",
+    image: "img/projects/email_outreach_agent.webp",
+    icon: "fa-solid fa-paper-plane",
+    accent: "violet"
+  },
+  {
+    name: "AI Scribble Art Generator Web App",
+    featured: false,
+    blurb:
+      "A comedic, “so-bad-it's-good” AI art generator built on a deliberately contrarian premise: instead of fixing your bad drawing, it commits to it. A user scribbles crude, lumpy, single-stroke colored outlines, names each one, and the AI paints hyper-detailed, photorealistic art that's forced to stay inside those exact pixel outlines — no smoothing, no “correcting” the wonky proportions — so a beautiful texture ends up jammed into a terrible doodle shape. A config-driven generation pipeline (reasoning model + image-generation tool) preserves the literal outline that cheaper direct-edit endpoints normalize away, with a per-image cost dashboard and swappable model profiles to keep generation under ~$0.02/image. A two-stage AI moderation gate (judging the typed words and the drawn shapes) plus graduated, proportionate enforcement — reject, warn, or ban — keeps it safe without being trigger-happy, and logged-out users can try it free, save work to reusable templates, and publish to a rated public gallery.",
+    highlights: [],
+    tags: ["Node.js", "Express", "PostgreSQL", "React", "OpenAI API (Responses + image tool)", "sharp", "Capacitor"],
+    link: null,
+    note: "Private project — get in touch for a walkthrough or demo.",
+    image: "img/projects/ai_scribble_art_generator.webp",
+    icon: "fa-solid fa-paintbrush",
+    accent: "rose"
+  },
+  {
     name: "MTS2 — Metrics & Tracking System 2",
     featured: false,
     blurb:
