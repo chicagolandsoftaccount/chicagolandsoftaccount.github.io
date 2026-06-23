@@ -33,7 +33,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@100;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 
   <!-- Icons (Font Awesome 6 Free, CSS only) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -101,24 +101,35 @@
     <section class="view" id="view-home" data-view="home" aria-label="Home">
       <div class="container-x">
         <div class="hero">
-          <div class="hero-status reveal">
-            <span class="dot"></span><span id="heroAvailable">Open to new roles</span>
+          <p class="hero-kicker reveal">
+            <span class="mark" aria-hidden="true"></span>
+            <span id="heroRole">Software Engineer</span>
+            <span class="sep" aria-hidden="true">/</span>
+            <span id="heroLocation">Chicago, IL</span>
+          </p>
+
+          <h1 class="hero-title reveal d1"><span class="grad" id="heroName">Alan</span></h1>
+
+          <p class="hero-tagline reveal d1" id="heroTagline"></p>
+
+          <p class="hero-aside reveal d2">
+            Back end at heart — comfortable across the stack, and a little obsessive
+            about the parts of a system you're not supposed to notice.
+          </p>
+
+          <div class="hero-cta reveal d2">
+            <a class="btn-x primary" href="#projects" data-route>See the work</a>
+            <a class="text-link" href="#contact" data-route>Get in touch <span aria-hidden="true">→</span></a>
+            <a class="text-link" id="heroGithub" href="#" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+            <a class="text-link" id="heroLinkedin" href="#" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>
           </div>
-          <h1 class="reveal d1">Hi, I'm <span class="grad" id="heroName">Alan</span>.</h1>
-          <p class="role reveal d1" id="heroRole">Software Engineer</p>
-          <p class="tagline reveal d2" id="heroTagline"></p>
-          <div class="meta reveal d2">
-            <span><i class="fa-solid fa-location-dot"></i> <span id="heroLocation"></span></span>
-            <span><i class="fa-solid fa-briefcase"></i> 5+ years experience</span>
-          </div>
-          <div class="hero-cta reveal d3">
-            <a class="btn-x primary" href="#projects" data-route><i class="fa-solid fa-layer-group"></i> View my work</a>
-            <a class="btn-x ghost" href="#contact" data-route><i class="fa-solid fa-paper-plane"></i> Get in touch</a>
-            <a class="btn-x ghost" id="heroGithub" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
-            <a class="btn-x ghost" id="heroLinkedin" href="#" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          </div>
-          <div class="stats reveal d3" id="heroStats"></div>
-          <p class="hero-now reveal d3" id="heroNow"></p>
+
+          <ul class="figures reveal d3" id="heroStats"></ul>
+
+          <p class="hero-now reveal d3">
+            <span id="heroAvailable" class="hero-avail">Open to new roles</span>
+            <span class="now-line" id="heroNow"></span>
+          </p>
         </div>
       </div>
     </section>
@@ -126,16 +137,15 @@
     <!-- --------------------------------------------------- About view -- -->
     <section class="view" id="view-about" data-view="about" aria-label="About">
       <div class="container-x">
-        <div class="section-head reveal">
-          <span class="eyebrow">About</span>
-          <h2>A bit about me</h2>
-          <p>Back-end at heart, comfortable across the stack, and serious about security.</p>
-        </div>
+        <header class="section-head reveal">
+          <span class="eyebrow"><span class="eyebrow-idx">01</span> About</span>
+          <h2>Serious about the boring parts:<br>security, data, and uptime.</h2>
+        </header>
         <div class="about-grid">
           <div class="about-text reveal d1" id="aboutText"></div>
-          <aside class="about-card reveal d2">
-            <h3>Education</h3>
-            <div id="aboutEducation"></div>
+          <aside class="about-aside reveal d2">
+            <h3 class="aside-label">Education</h3>
+            <ul class="edu-list" id="aboutEducation"></ul>
           </aside>
         </div>
       </div>
@@ -144,11 +154,11 @@
     <!-- ---------------------------------------------- Experience view -- -->
     <section class="view" id="view-experience" data-view="experience" aria-label="Experience">
       <div class="container-x">
-        <div class="section-head reveal">
-          <span class="eyebrow">Experience</span>
+        <header class="section-head reveal">
+          <span class="eyebrow"><span class="eyebrow-idx">02</span> Experience</span>
           <h2>Where I've worked</h2>
-          <p>Professional and volunteer roles, most recent first.</p>
-        </div>
+          <p class="section-lede">Professional and volunteer roles, most recent first.</p>
+        </header>
         <div class="timeline" id="timeline"></div>
         <p class="timeline-note reveal" id="timelineNote"></p>
       </div>
@@ -157,36 +167,37 @@
     <!-- ------------------------------------------------ Projects view -- -->
     <section class="view" id="view-projects" data-view="projects" aria-label="Projects">
       <div class="container-x">
-        <div class="section-head reveal">
-          <span class="eyebrow">Projects</span>
+        <header class="section-head reveal">
+          <span class="eyebrow"><span class="eyebrow-idx">03</span> Selected Work</span>
           <h2>Things I've built</h2>
-          <p>A curated selection — happy to walk through any of these in detail.</p>
-        </div>
-        <div class="projects-grid" id="projectsGrid"></div>
+          <p class="section-lede">A working catalogue — happy to walk through any of these in detail.</p>
+        </header>
+        <div class="projects" id="projectsGrid"></div>
       </div>
     </section>
 
     <!-- -------------------------------------------------- Skills view -- -->
     <section class="view" id="view-skills" data-view="skills" aria-label="Skills">
       <div class="container-x">
-        <div class="section-head reveal">
-          <span class="eyebrow">Skills</span>
+        <header class="section-head reveal">
+          <span class="eyebrow"><span class="eyebrow-idx">04</span> Capabilities</span>
           <h2>Tools I work with</h2>
-          <p>The languages, frameworks, and platforms I reach for most.</p>
-        </div>
-        <div class="skills-grid" id="skillsGrid"></div>
+          <p class="section-lede">The languages, frameworks, and platforms I reach for most — grouped, not ranked.</p>
+        </header>
+        <div class="skills" id="skillsGrid"></div>
       </div>
     </section>
 
     <!-- ------------------------------------------------- Contact view -- -->
     <section class="view" id="view-contact" data-view="contact" aria-label="Contact">
       <div class="container-x">
-        <div class="contact-card reveal">
-          <span class="eyebrow" style="justify-content:center;">Contact</span>
-          <h2>Let's build something</h2>
-          <p>I'm open to senior and staff back-end and full-stack roles, and happy to chat about contract or freelance work too. The fastest way to reach me is by email or LinkedIn.</p>
+        <div class="contact reveal">
+          <span class="eyebrow"><span class="eyebrow-idx">05</span> Contact</span>
+          <h2 class="contact-head">Let's build<br>something good.</h2>
+          <p class="contact-copy">Open to senior and staff back-end and full-stack roles — and happy to talk
+            contract or freelance work too. Email is fastest.</p>
           <div class="contact-actions" id="contactActions"></div>
-          <p class="contact-note">Résumé and references available upon request.</p>
+          <p class="contact-note">Résumé and references available on request.</p>
         </div>
       </div>
     </section>

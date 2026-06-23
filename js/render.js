@@ -3,12 +3,17 @@
    EXPERIENCE, PROJECTS, SKILLS). Content is static and author-trusted, so
    template-literal innerHTML is fine here. Runs before main.js wires up
    interactions (counters, reveal-on-scroll, scrollspy).
+
+   Layout is intentionally editorial: a hero lockup + figure strip, résumé
+   rows, a project catalogue (one feature spread + an indexed list), and
+   typographic skill lists. Tags render as plain text, not chips, which also
+   keeps the markup clean for applicant-tracking systems.
    ========================================================================= */
 (function () {
   'use strict';
 
   var $ = function (id) { return document.getElementById(id); };
-  function tags(list) { return (list || []).map(function (t) { return '<span class="tag">' + t + '</span>'; }).join(''); }
+  var pad = function (n) { return ('0' + n).slice(-2); };
 
   /* ---------------------------------------------------------------- Hero */
   function renderHero() {
@@ -20,28 +25,31 @@
     if (p.available && $('heroAvailable')) $('heroAvailable').textContent = p.available;
     $('heroGithub').href = p.links.github;
     $('heroLinkedin').href = p.links.linkedin;
-    if (p.now && $('heroNow')) $('heroNow').innerHTML = '<i class="fa-solid fa-circle-dot"></i> ' + p.now;
+    if (p.now && $('heroNow')) $('heroNow').textContent = p.now;
 
     $('heroStats').innerHTML = (p.stats || []).map(function (s) {
       var pre = s.prefix || '', suf = s.suffix || '';
       return '' +
-        '<div class="stat">' +
-          '<div class="num" data-count="' + s.value + '" data-prefix="' + pre + '" data-suffix="' + suf + '">' + pre + '0' + suf + '</div>' +
-          '<div class="lbl">' + s.label + '</div>' +
-        '</div>';
+        '<li class="figure">' +
+          '<span class="figure-num num" data-count="' + s.value + '" data-prefix="' + pre + '" data-suffix="' + suf + '">' + pre + '0' + suf + '</span>' +
+          '<span class="figure-lbl">' + s.label + '</span>' +
+        '</li>';
     }).join('');
   }
 
   /* --------------------------------------------------------------- About */
   function renderAbout() {
     var p = window.PROFILE; if (!p) return;
-    $('aboutText').innerHTML = (p.about || []).map(function (para) { return '<p>' + para + '</p>'; }).join('');
+    $('aboutText').innerHTML = (p.about || []).map(function (para, i) {
+      return '<p' + (i === 0 ? ' class="lead"' : '') + '>' + para + '</p>';
+    }).join('');
     $('aboutEducation').innerHTML = (p.education || []).map(function (e) {
       return '' +
-        '<div class="edu-item">' +
-          '<div class="school">' + e.school + '</div>' +
-          '<div class="detail"><span>' + e.detail + '</span><span>' + e.year + '</span></div>' +
-        '</div>';
+        '<li class="edu-item">' +
+          '<span class="edu-school">' + e.school + '</span>' +
+          '<span class="edu-detail">' + e.detail + '</span>' +
+          '<span class="edu-year">' + e.year + '</span>' +
+        '</li>';
     }).join('');
   }
 
@@ -49,24 +57,25 @@
   function renderExperience() {
     var list = window.EXPERIENCE || [];
     var note = window.PROFILE && window.PROFILE.experienceNote;
-    if (note && $('timelineNote')) $('timelineNote').innerHTML = '<i class="fa-solid fa-circle-info"></i> ' + note;
+    if (note && $('timelineNote')) $('timelineNote').textContent = note;
     $('timeline').innerHTML = list.map(function (x, i) {
       var kind = x.kind === 'volunteer' ? 'volunteer' : 'work';
       var kindLabel = kind === 'volunteer' ? 'Volunteer' : 'Full-time';
       var bullets = (x.highlights || []).map(function (b) { return '<li>' + b + '</li>'; }).join('');
+      var tg = (x.tags || []).join('   ·   ');
       return '' +
-        '<article class="xp-card reveal' + (i % 2 ? ' d1' : '') + '" id="xp-' + i + '">' +
-          '<div class="xp-top">' +
-            '<h3 class="xp-role">' + x.role + ' · <span class="xp-org">' + x.org + '</span></h3>' +
+        '<article class="xp reveal" id="xp-' + i + '">' +
+          '<div class="xp-when">' +
             '<span class="xp-dates">' + x.start + ' — ' + x.end + '</span>' +
+            '<span class="xp-kind ' + kind + '">' + kindLabel + '</span>' +
           '</div>' +
-          '<div class="xp-meta">' +
-            '<span class="badge-kind ' + kind + '">' + kindLabel + '</span>' +
+          '<div class="xp-body">' +
+            '<h3 class="xp-role">' + x.role + ' <span class="xp-org">' + x.org + '</span></h3>' +
             '<span class="xp-loc">' + x.location + '</span>' +
+            (x.summary ? '<p class="xp-summary">' + x.summary + '</p>' : '') +
+            (bullets ? '<ul class="xp-list">' + bullets + '</ul>' : '') +
+            (tg ? '<p class="xp-tags">' + tg + '</p>' : '') +
           '</div>' +
-          (x.summary ? '<p class="xp-summary">' + x.summary + '</p>' : '') +
-          (bullets ? '<ul class="xp-list">' + bullets + '</ul>' : '') +
-          '<div class="tags">' + tags(x.tags) + '</div>' +
         '</article>';
     }).join('');
   }
@@ -78,7 +87,7 @@
       var external = /^https?:/.test(x.link);
       var attrs = external ? ' target="_blank" rel="noopener"' : '';
       link = '<a class="proj-link" href="' + x.link + '"' + attrs + '>' +
-               (x.linkLabel || 'View') + ' <i class="fa-solid fa-arrow-up-right-from-square"></i></a>';
+               (x.linkLabel || 'View') + ' <span aria-hidden="true">↗</span></a>';
     }
     var note = x.note ? '<span class="proj-note">' + x.note + '</span>' : '';
     if (!link && !note) return '';
@@ -88,42 +97,42 @@
   function renderProjects() {
     var list = window.PROJECTS || [];
     $('projectsGrid').innerHTML = list.map(function (x, i) {
-      var accent = x.accent || 'teal';
-      var icon = '<div class="proj-icon ' + accent + '"><i class="' + (x.icon || 'fa-solid fa-cube') + '"></i></div>';
-      var flag = x.featured ? '<span class="proj-flag">Flagship project</span>' : '';
-      var head = '<div class="proj-head">' + icon +
-                 '<div>' + flag + '<h3 class="proj-title">' + x.name + '</h3></div></div>';
+      var idx = pad(i + 1);
       var blurb = '<p class="proj-blurb">' + x.blurb + '</p>';
-      var bullets = (x.highlights && x.highlights.length)
-        ? '<ul class="proj-list">' + x.highlights.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul>'
-        : '';
-      var tagHtml = '<div class="tags">' + tags(x.tags) + '</div>';
+      var tg = (x.tags || []).length ? '<p class="proj-tags">' + x.tags.join('   ·   ') + '</p>' : '';
       var foot = projectFooter(x);
 
-      var imgBlock = x.image
-        ? '<div class="' + (x.featured ? 'proj-banner' : 'proj-thumb') + '">' +
-            '<img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
-        : '';
-
       if (x.featured) {
-        // Full-width screenshot banner, then a two-column body
-        // (blurb + tags on the left, highlights on the right).
+        // One large editorial spread: full image, then the write-up + evidence.
+        var banner = x.image
+          ? '<div class="proj-banner"><img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
+          : '';
+        var bullets = (x.highlights || []).length
+          ? '<ul class="proj-list">' + x.highlights.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul>'
+          : '';
         return '' +
-          '<article class="proj-card featured reveal" id="proj-' + i + '">' +
-            imgBlock +
-            head +
-            '<div class="proj-body">' +
-              '<div>' + blurb + tagHtml + '</div>' +
-              '<div>' + bullets + '</div>' +
+          '<article class="proj-feature reveal" id="proj-' + i + '">' +
+            banner +
+            '<div class="proj-feature-text">' +
+              '<span class="proj-idx">Flagship — ' + idx + '</span>' +
+              '<h3 class="proj-title">' + x.name + '</h3>' +
+              blurb + bullets + tg + foot +
             '</div>' +
-            foot +
           '</article>';
       }
 
-      var delay = (i % 2) ? ' d1' : '';
+      // Everything else: an indexed catalogue row.
+      var thumb = x.image
+        ? '<div class="proj-row-media proj-thumb"><img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
+        : '';
       return '' +
-        '<article class="proj-card reveal' + delay + '" id="proj-' + i + '">' +
-          imgBlock + head + blurb + bullets + tagHtml + foot +
+        '<article class="proj-row reveal" id="proj-' + i + '">' +
+          '<div class="proj-row-idx">' + idx + '</div>' +
+          '<div class="proj-row-main">' +
+            '<h3 class="proj-title">' + x.name + '</h3>' +
+            blurb + tg + foot +
+          '</div>' +
+          thumb +
         '</article>';
     }).join('');
   }
@@ -133,9 +142,9 @@
     var list = window.SKILLS || [];
     $('skillsGrid').innerHTML = list.map(function (g, i) {
       return '' +
-        '<div class="skill-group reveal' + (i % 2 ? ' d1' : '') + '" id="skill-' + i + '">' +
-          '<h3><i class="' + (g.icon || 'fa-solid fa-code') + '"></i> ' + g.group + '</h3>' +
-          '<div class="tags">' + tags(g.items) + '</div>' +
+        '<div class="skill reveal" id="skill-' + i + '">' +
+          '<h3 class="skill-cat">' + g.group + '</h3>' +
+          '<p class="skill-items">' + (g.items || []).join(', ') + '</p>' +
         '</div>';
     }).join('');
   }
@@ -147,9 +156,11 @@
     var mailto = 'mailto:' + email;
 
     $('contactActions').innerHTML = '' +
-      '<a class="btn-x primary" href="' + mailto + '"><i class="fa-solid fa-envelope"></i> ' + email + '</a>' +
-      '<a class="btn-x ghost" href="' + p.links.linkedin + '" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>' +
-      '<a class="btn-x ghost" href="' + p.links.github + '" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>';
+      '<a class="contact-email" href="' + mailto + '">' + email + '</a>' +
+      '<div class="contact-links">' +
+        '<a href="' + p.links.linkedin + '" target="_blank" rel="noopener">LinkedIn <span aria-hidden="true">↗</span></a>' +
+        '<a href="' + p.links.github + '" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>' +
+      '</div>';
 
     $('footerSocial').innerHTML = '' +
       '<a href="' + mailto + '" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>' +
