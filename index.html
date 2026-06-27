@@ -220,6 +220,8 @@
   <!-- Image lightbox (click a project screenshot to enlarge) -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
     <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" type="button" aria-label="Previous image" hidden>‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" type="button" aria-label="Next image" hidden>›</button>
     <figure class="lightbox-figure">
       <img id="lightboxImg" src="" alt="">
       <figcaption id="lightboxCaption"></figcaption>
@@ -235,6 +237,7 @@
   <script src="js/render.js"></script>
   <script src="js/router.js"></script>
   <script src="js/search.js"></script>
+  <script src="js/carousel.js"></script>
   <script src="js/lightbox.js"></script>
   <script src="js/main.js"></script>
 </body>

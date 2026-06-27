@@ -335,6 +335,48 @@ img { max-width: 100%; display: block; }
 .proj-row-media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .5s var(--ease); }
 .proj-row-media:hover img { transform: scale(1.04); }
 
+/* Manual image carousel (project cards with 2+ screenshots) */
+.proj-carousel { position: relative; }
+.proj-feature .proj-banner.proj-carousel { aspect-ratio: 16 / 10; }
+.proj-carousel .carousel-track { position: absolute; inset: 0; }
+.proj-feature .proj-banner.proj-carousel .carousel-img,
+.proj-row-media.proj-carousel .carousel-img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  aspect-ratio: auto; object-fit: cover; object-position: center top;
+  opacity: 0; pointer-events: none; transition: opacity .45s var(--ease), transform .5s var(--ease);
+}
+.proj-feature .proj-banner.proj-carousel .carousel-img.is-active,
+.proj-row-media.proj-carousel .carousel-img.is-active { opacity: 1; pointer-events: auto; z-index: 1; }
+.proj-carousel .carousel-btn {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+  display: grid; place-items: center; width: 34px; height: 34px; padding: 0;
+  border: 1px solid var(--border-2); border-radius: 50%;
+  background: rgba(20, 18, 14, .55); color: #fff; font-size: 1.25rem; line-height: 1;
+  cursor: pointer; opacity: 0; transition: opacity .2s var(--ease), background .18s var(--ease), border-color .18s var(--ease);
+}
+.proj-carousel:hover .carousel-btn,
+.proj-carousel:focus-within .carousel-btn { opacity: 1; }
+.proj-carousel .carousel-btn:hover { background: var(--accent); border-color: var(--accent); }
+.proj-carousel .carousel-prev { left: 8px; }
+.proj-carousel .carousel-next { right: 8px; }
+.proj-carousel .carousel-dots {
+  position: absolute; left: 0; right: 0; bottom: 8px; z-index: 3;
+  display: flex; justify-content: center; gap: 6px;
+}
+.proj-carousel .carousel-dot {
+  width: 7px; height: 7px; padding: 0; border: none; border-radius: 50%;
+  background: rgba(255, 255, 255, .5); cursor: pointer; transition: background .18s var(--ease);
+}
+.proj-carousel .carousel-dot.is-active { background: #fff; }
+/* Smaller controls on the compact catalogue thumbnails */
+.proj-row-media.proj-carousel .carousel-btn { width: 24px; height: 24px; font-size: .95rem; }
+.proj-row-media.proj-carousel .carousel-prev { left: 4px; }
+.proj-row-media.proj-carousel .carousel-next { right: 4px; }
+.proj-row-media.proj-carousel .carousel-dots { bottom: 5px; gap: 4px; }
+.proj-row-media.proj-carousel .carousel-dot { width: 5px; height: 5px; }
+/* Touch devices have no hover — keep the arrows visible */
+@media (hover: none) { .proj-carousel .carousel-btn { opacity: .9; } }
+
 .proj-foot { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.1rem; }
 .proj-note { font-family: var(--font-mono); font-size: .76rem; color: var(--muted); }
 .proj-link { font-family: var(--font-mono); font-weight: 700; font-size: .76rem; text-transform: uppercase; letter-spacing: .07em; color: var(--heading); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
@@ -464,6 +506,16 @@ body.no-scroll { overflow: hidden; }
   transition: border-color .2s var(--ease), color .2s var(--ease);
 }
 .lightbox-close:hover { color: var(--accent); border-color: var(--accent); }
+.lightbox-nav {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 2; width: 48px; height: 48px;
+  border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.25);
+  color: #fff; cursor: pointer; display: grid; place-items: center; font-size: 1.8rem; line-height: 1;
+  transition: border-color .2s var(--ease), color .2s var(--ease), background .2s var(--ease);
+}
+.lightbox-nav:hover { color: var(--accent); border-color: var(--accent); }
+.lightbox-nav[hidden] { display: none; }
+.lightbox-prev { left: clamp(.6rem, 3vw, 2rem); }
+.lightbox-next { right: clamp(.6rem, 3vw, 2rem); }
 
 /* ------------------------------------------------------------ noscript/misc */
 .noscript-warn { background: var(--accent); color: var(--on-accent); text-align: center; padding: .8rem; font-weight: 600; }

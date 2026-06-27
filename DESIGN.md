@@ -155,6 +155,11 @@ of forcing horizontal overflow.
   Better for scanning and for applicant-tracking systems.
 - **Catalogue numbering** — `Flagship — 01`, `Artifact 02 / 16`, section
   `01`–`05`. The archive/index motif.
+- **Image carousel** — project cards with 2+ screenshots become a *manual*
+  (no autoplay) carousel inside the same `.proj-banner` / `.proj-row-media`
+  frame. Slides cross-fade; restrained circular prev/next arrows surface on
+  hover/focus, with small dots below. Wired by `js/carousel.js`; the active
+  `<img>` stays clickable for the lightbox. Single-image cards are unchanged.
 
 ---
 
@@ -247,6 +252,7 @@ data/*.js          content as globals: PROFILE, EXPERIENCE, PROJECTS, SKILLS
 js/render.js       builds all section markup from the data globals
 js/router.js       hash routing, reveal/count-up replay, deep-link flash
 js/search.js       client-side index over the data
+js/carousel.js     manual prev/next/dots for multi-image project cards
 js/lightbox.js     project image viewer
 js/main.js         theme toggle, mobile nav, sticky header, back-to-top
 pages/*.html       privacy + security (reuse the same tokens)

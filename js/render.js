@@ -94,6 +94,33 @@
     return '<div class="proj-foot">' + note + link + '</div>';
   }
 
+  // Build the screenshot media for a card. One image renders as a plain
+  // <img>; two or more become a manual (no autoplay) carousel. Either way the
+  // <img>s stay inside .proj-banner / .proj-thumb so the lightbox still works.
+  function projectMedia(x, wrapClass) {
+    var imgs = (x.images && x.images.length) ? x.images : (x.image ? [x.image] : []);
+    if (!imgs.length) return '';
+    if (imgs.length === 1) {
+      return '<div class="' + wrapClass + '"><img src="' + imgs[0] + '" alt="' + x.name +
+             ' screenshot" loading="lazy"></div>';
+    }
+    var slides = imgs.map(function (src, j) {
+      return '<img class="carousel-img' + (j === 0 ? ' is-active' : '') + '" src="' + src +
+             '" alt="' + x.name + ' screenshot ' + (j + 1) + '" loading="lazy">';
+    }).join('');
+    var dots = imgs.map(function (src, j) {
+      return '<button type="button" class="carousel-dot' + (j === 0 ? ' is-active' : '') +
+             '" aria-label="Show image ' + (j + 1) + '"></button>';
+    }).join('');
+    return '' +
+      '<div class="' + wrapClass + ' proj-carousel" data-idx="0">' +
+        '<div class="carousel-track">' + slides + '</div>' +
+        '<button type="button" class="carousel-btn carousel-prev" aria-label="Previous image">‹</button>' +
+        '<button type="button" class="carousel-btn carousel-next" aria-label="Next image">›</button>' +
+        '<div class="carousel-dots">' + dots + '</div>' +
+      '</div>';
+  }
+
   function renderProjects() {
     var list = window.PROJECTS || [];
     $('projectsGrid').innerHTML = list.map(function (x, i) {
@@ -104,9 +131,7 @@
 
       if (x.featured) {
         // One large editorial spread: full image, then the write-up + evidence.
-        var banner = x.image
-          ? '<div class="proj-banner"><img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
-          : '';
+        var banner = projectMedia(x, 'proj-banner');
         var bullets = (x.highlights || []).length
           ? '<ul class="proj-list">' + x.highlights.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul>'
           : '';
@@ -122,9 +147,7 @@
       }
 
       // Everything else: an indexed catalogue row.
-      var thumb = x.image
-        ? '<div class="proj-row-media proj-thumb"><img src="' + x.image + '" alt="' + x.name + ' screenshot" loading="lazy"></div>'
-        : '';
+      var thumb = projectMedia(x, 'proj-row-media proj-thumb');
       return '' +
         '<article class="proj-row reveal" id="proj-' + i + '">' +
           '<div class="proj-row-idx">' + idx + '</div>' +

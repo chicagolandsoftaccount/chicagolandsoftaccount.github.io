@@ -25,7 +25,12 @@ window.PROJECTS = [
     tags: ["React", "Vite", "Capacitor", "Node.js", "Express", "PostgreSQL", "OpenAI", "REST APIs", "Cron", "JWT / argon2", "Quantitative Analysis", "Recharts", "Data Visualization", "Fintech", "Puppeteer", "CRUD Systems", "Front-End", "Back-End", "Deployment"],
     link: null,
     note: "Private platform — get in touch for a walkthrough or demo.",
-    image: "img/projects/ccr.webp",
+    images: [
+      "img/projects/ccr.webp",
+      "img/projects/ccr_aqi_dashboard.webp",
+      "img/projects/ccr_aqi.webp",
+      "img/projects/ccr_aqi_todo.webp"
+    ],
     icon: "fa-solid fa-chart-line",
     accent: ""
   },
@@ -54,6 +59,19 @@ window.PROJECTS = [
     accent: "green"
   },
   {
+    name: "AI Message Queue",
+    featured: false,
+    blurb:
+      "I built a message queue system that lets multiple agents communicate, collaborate, and share context through an issue tracker and wiki-style knowledge base, allowing features to be worked on in parallel.",
+    highlights: [],
+    tags: ["Multi-Agent Systems", "Message Queue", "Issue Tracker", "Knowledge Base", "AI Agents"],
+    link: null,
+    note: "Private project — get in touch for a walkthrough or demo.",
+    image: "img/projects/ai_message_queue.webp",
+    icon: "fa-solid fa-list-check",
+    accent: "amber"
+  },
+  {
     name: "Email Outreach Agent",
     featured: false,
     blurb:
@@ -62,20 +80,26 @@ window.PROJECTS = [
     tags: ["Node.js", "Express", "PostgreSQL", "Puppeteer", "Anthropic Claude API"],
     link: null,
     note: "Private project — get in touch for a walkthrough or demo.",
-    image: "img/projects/email_outreach_agent.webp",
+    images: [
+      "img/projects/email_outreach_agent.webp",
+      "img/projects/email_outreach_tool.webp"
+    ],
     icon: "fa-solid fa-paper-plane",
     accent: "violet"
   },
   {
-    name: "AI Scribble Art Generator Web App",
+    name: "Scribble Slop",
     featured: false,
     blurb:
-      "A comedic, “so-bad-it's-good” AI art generator built on a deliberately contrarian premise: instead of fixing your bad drawing, it commits to it. A user scribbles crude, lumpy, single-stroke colored outlines, names each one, and the AI paints hyper-detailed, photorealistic art that's forced to stay inside those exact pixel outlines — no smoothing, no “correcting” the wonky proportions — so a beautiful texture ends up jammed into a terrible doodle shape. A config-driven generation pipeline (reasoning model + image-generation tool) preserves the literal outline that cheaper direct-edit endpoints normalize away, with a per-image cost dashboard and swappable model profiles to keep generation under ~$0.02/image. A two-stage AI moderation gate (judging the typed words and the drawn shapes) plus graduated, proportionate enforcement — reject, warn, or ban — keeps it safe without being trigger-happy, and logged-out users can try it free, save work to reusable templates, and publish to a rated public gallery.",
+      "Scribble Slop is an AI art tool that turns rough scribbles into fully rendered images while preserving the original shape and intent — no “entity normalization.” A user scribbles crude, single-stroke colored outlines, names each one, and the AI paints hyper-detailed art that's forced to stay inside those exact pixel outlines, so a beautiful texture ends up jammed into a wonky doodle shape. A config-driven generation pipeline (reasoning model + image-generation tool) preserves the literal outline that cheaper direct-edit endpoints normalize away, while a two-stage automated AI moderation gate (judging both the typed words and the drawn shapes) with graduated, proportionate enforcement — reject, warn, or ban — keeps the rated public gallery safe. Built with React, Node, Express, and PostgreSQL, with auth, admin features, email flows, and AI API integration.",
     highlights: [],
-    tags: ["Node.js", "Express", "PostgreSQL", "React", "OpenAI API (Responses + image tool)", "sharp", "Capacitor"],
+    tags: ["React", "Node.js", "Express", "PostgreSQL", "OpenAI API (Responses + image tool)", "Auth", "Email Flows", "AI Moderation", "sharp", "Capacitor"],
     link: null,
     note: "Private project — get in touch for a walkthrough or demo.",
-    image: "img/projects/ai_scribble_art_generator.webp",
+    images: [
+      "img/projects/scribble_slop_1.webp",
+      "img/projects/scribble_slop_2.webp"
+    ],
     icon: "fa-solid fa-paintbrush",
     accent: "rose"
   },
@@ -130,7 +154,31 @@ window.PROJECTS = [
     accent: "green"
   },
   {
-    name: "2D MMO Engine",
+    name: "Browser-Based 3D Online Multiplayer Game Engine",
+    featured: false,
+    blurb:
+      "I built a browser-based multiplayer 3D game engine (client and server) using React, TypeScript, Three.js, Node, Express, PostgreSQL, WebSockets, and REST APIs. It uses tile-based logic, A* pathfinding, server-side validation, action queues, game ticks, lazy-loaded assets and versioned caching with hashes, and scoped WebSocket updates for performance. The goal was to better understand REST vs. WebSockets, improve TypeScript skills, and think more deeply about real-time systems.",
+    highlights: [],
+    tags: ["React", "TypeScript", "Three.js", "Node.js", "Express", "PostgreSQL", "WebSockets", "REST APIs", "A* Pathfinding", "Real-Time Systems"],
+    link: null,
+    image: "img/projects/multiplayer_game.webp",
+    icon: "fa-solid fa-cube",
+    accent: "blue"
+  },
+  {
+    name: "3D Model Viewer and Editor",
+    featured: false,
+    blurb:
+      "I wrote a script to have an AI API auto-generate the 3D models by using a prompt template and iterating through an entity string array. I also made a web-based viewer/editor tool for it which allows rudimentary edits as well, though it can't make full 3D models from scratch. It's more for editing/fixing AI-generated models.",
+    highlights: [],
+    tags: ["Three.js", "TypeScript", "React"],
+    link: null,
+    image: "img/projects/3d_model_viewer.webp",
+    icon: "fa-solid fa-cubes",
+    accent: "green"
+  },
+  {
+    name: "2D MMO Engine (Old)",
     featured: false,
     blurb:
       "A browser-based 2D MMORPG engine with tile-based movement and collision detection, plus a companion desktop level editor that visually edits JSON map data.",
