@@ -60,7 +60,7 @@
     if (note && $('timelineNote')) $('timelineNote').textContent = note;
     $('timeline').innerHTML = list.map(function (x, i) {
       var kind = x.kind === 'volunteer' ? 'volunteer' : 'work';
-      var kindLabel = kind === 'volunteer' ? 'Volunteer' : 'Full-time';
+      var kindLabel = x.kindLabel || (kind === 'volunteer' ? 'Volunteer' : 'Full-time');
       var bullets = (x.highlights || []).map(function (b) { return '<li>' + b + '</li>'; }).join('');
       var tg = (x.tags || []).join('   ·   ');
       return '' +

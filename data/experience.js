@@ -13,6 +13,7 @@ window.EXPERIENCE = [
     start: "2026",
     end: "Present",
     kind: "work",
+    kindLabel: "Part-time",
     summary:
       "Building a full-stack platform that automates investment research, financial reporting, and analyst workflows.",
     highlights: [
