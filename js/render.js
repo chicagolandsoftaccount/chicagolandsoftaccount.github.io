@@ -81,6 +81,14 @@
   }
 
   /* ------------------------------------------------------------ Projects */
+  // A shareable deep link to this project. href drives the hash router
+  // (#projects/proj-N), which scrolls to and flashes the card on arrival.
+  function projectPermalink(i, name) {
+    return '<a class="proj-permalink" href="#projects/proj-' + i + '" ' +
+           'aria-label="Link to ' + name + '" title="Link to this project">' +
+           '<i class="fa-solid fa-link" aria-hidden="true"></i></a>';
+  }
+
   function projectFooter(x) {
     var link = '';
     if (x.link) {
@@ -95,11 +103,16 @@
   }
 
   // Build the screenshot media for a card. One image renders as a plain
-  // <img>; two or more become a manual (no autoplay) carousel. Either way the
+  // <img>; two or more become a manual (no autoplay) carousel. Projects with
+  // no screenshot get a quiet placeholder tile keyed to their icon, so every
+  // card keeps the same media footprint instead of collapsing. Either way the
   // <img>s stay inside .proj-banner / .proj-thumb so the lightbox still works.
   function projectMedia(x, wrapClass) {
     var imgs = (x.images && x.images.length) ? x.images : (x.image ? [x.image] : []);
-    if (!imgs.length) return '';
+    if (!imgs.length) {
+      return '<div class="' + wrapClass + ' proj-ph"><i class="' +
+             (x.icon || 'fa-solid fa-folder') + '" aria-hidden="true"></i></div>';
+    }
     if (imgs.length === 1) {
       return '<div class="' + wrapClass + '"><img src="' + imgs[0] + '" alt="' + x.name +
              ' screenshot" loading="lazy"></div>';
@@ -129,18 +142,27 @@
       var tg = (x.tags || []).length ? '<p class="proj-tags">' + x.tags.join('   ·   ') + '</p>' : '';
       var foot = projectFooter(x);
 
+      // Cards are laid out with CSS grid areas (head / media / text). Keeping
+      // the title, media, and body as siblings lets the same markup reflow to
+      // "title → image → body" on narrow viewports and an editorial spread on
+      // wide ones — without the body text ever squeezing into a thin column.
       if (x.featured) {
-        // One large editorial spread: full image, then the write-up + evidence.
+        // One large editorial spread: a prominent screenshot beside the write-up.
         var banner = projectMedia(x, 'proj-banner');
         var bullets = (x.highlights || []).length
           ? '<ul class="proj-list">' + x.highlights.map(function (b) { return '<li>' + b + '</li>'; }).join('') + '</ul>'
           : '';
         return '' +
           '<article class="proj-feature reveal" id="proj-' + i + '">' +
+            '<div class="proj-feature-head">' +
+              '<div class="proj-kicker">' +
+                '<span class="proj-idx">Flagship — ' + idx + '</span>' +
+                projectPermalink(i, x.name) +
+              '</div>' +
+              '<h3 class="proj-title">' + x.name + '</h3>' +
+            '</div>' +
             banner +
             '<div class="proj-feature-text">' +
-              '<span class="proj-idx">Flagship — ' + idx + '</span>' +
-              '<h3 class="proj-title">' + x.name + '</h3>' +
               blurb + bullets + tg + foot +
             '</div>' +
           '</article>';
@@ -151,11 +173,11 @@
       return '' +
         '<article class="proj-row reveal" id="proj-' + i + '">' +
           '<div class="proj-row-idx">' + idx + '</div>' +
+          '<h3 class="proj-title proj-row-title">' + x.name + projectPermalink(i, x.name) + '</h3>' +
+          thumb +
           '<div class="proj-row-main">' +
-            '<h3 class="proj-title">' + x.name + '</h3>' +
             blurb + tg + foot +
           '</div>' +
-          thumb +
         '</article>';
     }).join('');
   }

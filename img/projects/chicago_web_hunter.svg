@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900" role="img" aria-label="Chicago Web Hunter — screenshot coming soon">
+  <rect width="1600" height="900" fill="#ece8df"/>
+  <rect x="1" y="1" width="1598" height="898" fill="none" stroke="rgba(23,21,16,.14)" stroke-width="2"/>
+  <g fill="none" stroke="rgba(23,21,16,.10)" stroke-width="1.5">
+    <line x1="0" y1="150" x2="1600" y2="150"/>
+    <line x1="0" y1="750" x2="1600" y2="750"/>
+  </g>
+  <text x="120" y="120" font-family="'Space Mono', ui-monospace, monospace" font-size="34" letter-spacing="6" fill="#6b675b">FLAGSHIP — SECURITY</text>
+  <g transform="translate(800 430)">
+    <path d="M0,-150 L120,-105 V15 C120,95 65,150 0,180 C-65,150 -120,95 -120,15 V-105 Z"
+          fill="none" stroke="#d2391c" stroke-width="8" stroke-linejoin="round"/>
+    <circle cx="-14" cy="-6" r="46" fill="none" stroke="#16140f" stroke-width="8"/>
+    <line x1="20" y1="30" x2="72" y2="82" stroke="#16140f" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <text x="800" y="700" text-anchor="middle" font-family="'Fraunces', Georgia, serif" font-size="64" font-weight="600" fill="#16140f">Chicago Web Hunter</text>
+  <text x="800" y="820" text-anchor="middle" font-family="'IBM Plex Sans', system-ui, sans-serif" font-size="30" fill="#9a9588">Screenshot coming soon</text>
+</svg>

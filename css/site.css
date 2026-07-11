@@ -312,13 +312,25 @@ img { max-width: 100%; display: block; }
 /* --------------------------------------------------------------- Projects */
 .projects { display: grid; }
 
-/* Flagship — an editorial spread */
-.proj-feature { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.6rem, 4vw, 3rem); align-items: center; padding-bottom: clamp(2.4rem, 5vw, 3.6rem); }
+/* Flagship — an editorial spread: title on top, then a prominent screenshot
+   beside the write-up. Grid areas (below) let it reflow to title → image → body
+   on narrow viewports without ever squeezing the body into a thin column. */
+.proj-feature {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  grid-template-areas: "media head" "media text";
+  column-gap: clamp(1.6rem, 4vw, 3rem); row-gap: .55rem;
+  align-items: start;
+  padding-bottom: clamp(2.6rem, 5vw, 3.8rem);
+}
+.proj-feature-head { grid-area: head; }
+.proj-feature > .proj-banner { grid-area: media; align-self: center; }
+.proj-feature-text { grid-area: text; }
 .proj-feature .proj-banner { overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); cursor: zoom-in; }
 .proj-feature .proj-banner img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; object-position: center top; transition: transform .5s var(--ease); }
 .proj-feature .proj-banner:hover img { transform: scale(1.03); }
 .proj-idx { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .16em; color: var(--accent); }
-.proj-feature .proj-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 600; margin: .5rem 0 .7rem; line-height: 1.1; }
+.proj-feature .proj-title { font-family: var(--font-display); font-size: clamp(1.7rem, 3.6vw, 2.4rem); font-weight: 600; margin: .45rem 0 0; line-height: 1.1; }
 .proj-blurb { color: var(--muted); margin: 0; }
 .proj-feature .proj-blurb { color: var(--text); font-size: 1.05rem; }
 .proj-list { list-style: none; margin: 1.1rem 0 0; padding: 0; display: grid; gap: .55rem; }
@@ -326,12 +338,21 @@ img { max-width: 100%; display: block; }
 .proj-list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
 .proj-tags { font-family: var(--font-mono); font-size: .74rem; color: var(--faint); margin: 1.1rem 0 0; line-height: 1.7; }
 
-/* Catalogue rows */
-.proj-row { display: grid; grid-template-columns: 54px minmax(0, 1fr) 168px; gap: 1.6rem; align-items: start; padding: 1.9rem 0; border-top: 1px solid var(--rule); }
+/* Catalogue rows — index + title across the top, a screenshot on the right,
+   and the write-up beneath the title. Grid areas keep it reflowable. */
+.proj-row {
+  display: grid;
+  grid-template-columns: 54px minmax(0, 1fr) 220px;
+  grid-template-areas: "idx title media" "idx main media";
+  column-gap: 1.6rem; row-gap: .4rem;
+  align-items: start; padding: 1.9rem 0; border-top: 1px solid var(--rule);
+}
 .proj-row:last-child { border-bottom: 1px solid var(--rule); }
-.proj-row-idx { font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--faint); padding-top: .15rem; }
-.proj-row-main .proj-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; margin: 0 0 .4rem; line-height: 1.15; }
-.proj-row-media { width: 168px; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); cursor: zoom-in; justify-self: end; }
+.proj-row-idx { grid-area: idx; font-family: var(--font-display); font-size: 1.25rem; font-weight: 500; color: var(--faint); padding-top: .15rem; }
+.proj-row-title { grid-area: title; }
+.proj-row-main { grid-area: main; }
+.proj-row .proj-title { font-family: var(--font-display); font-size: 1.35rem; font-weight: 600; margin: 0 0 .4rem; line-height: 1.15; }
+.proj-row-media { grid-area: media; width: 220px; aspect-ratio: 16 / 10; overflow: hidden; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface-2); cursor: zoom-in; justify-self: end; align-self: start; }
 .proj-row-media img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform .5s var(--ease); }
 .proj-row-media:hover img { transform: scale(1.04); }
 
@@ -377,6 +398,14 @@ img { max-width: 100%; display: block; }
 /* Touch devices have no hover — keep the arrows visible */
 @media (hover: none) { .proj-carousel .carousel-btn { opacity: .9; } }
 
+/* Placeholder tile for projects without a screenshot — flat and quiet, keyed
+   to the project's icon. No gradients: it stays in the monochrome palette so
+   the card keeps its media footprint without shouting. */
+.proj-ph { display: grid; place-items: center; aspect-ratio: 16 / 10; background: var(--surface-2); color: var(--faint); }
+.proj-ph i { font-size: clamp(1.6rem, 4.5vw, 2.6rem); }
+.proj-feature .proj-ph i { font-size: clamp(2.4rem, 5vw, 3.6rem); }
+.proj-feature .proj-banner.proj-ph, .proj-row-media.proj-ph { cursor: default; }
+
 .proj-foot { display: flex; align-items: baseline; gap: 1.2rem; flex-wrap: wrap; margin-top: 1.1rem; }
 .proj-note { font-family: var(--font-mono); font-size: .76rem; color: var(--muted); }
 .proj-link { font-family: var(--font-mono); font-weight: 700; font-size: .76rem; text-transform: uppercase; letter-spacing: .07em; color: var(--heading); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
@@ -384,11 +413,26 @@ img { max-width: 100%; display: block; }
 .proj-link:hover { color: var(--accent); }
 .proj-link:hover span { transform: translate(2px, -2px); }
 
+/* Per-project permalink — deep-links to #projects/proj-N */
+.proj-kicker { display: flex; align-items: center; gap: .7rem; }
+.proj-permalink { display: inline-flex; color: var(--faint); line-height: 1; transition: color .18s var(--ease), transform .18s var(--ease); }
+.proj-permalink:hover { color: var(--accent); transform: translateY(-1px); }
+.proj-idx + .proj-permalink { font-size: .78rem; }
+.proj-title .proj-permalink { margin-left: .5rem; font-size: .68em; vertical-align: middle; }
+
 @media (max-width: 760px) {
-  .proj-feature { grid-template-columns: 1fr; }
-  .proj-feature .proj-banner { order: -1; }
-  .proj-row { grid-template-columns: 40px 1fr; gap: .4rem 1.1rem; }
-  .proj-row-media { grid-column: 2; width: 100%; max-width: 320px; justify-self: start; margin-top: 1rem; }
+  /* Stack every card as title → image → body so text never goes narrow. */
+  .proj-feature {
+    grid-template-columns: 1fr;
+    grid-template-areas: "head" "media" "text";
+    row-gap: 1rem;
+  }
+  .proj-row {
+    grid-template-columns: auto 1fr;
+    grid-template-areas: "idx title" "media media" "main main";
+    column-gap: .9rem; row-gap: .7rem;
+  }
+  .proj-row-media { width: 100%; justify-self: stretch; align-self: stretch; }
 }
 
 /* ----------------------------------------------------------------- Skills */

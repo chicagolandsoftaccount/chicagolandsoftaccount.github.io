@@ -35,6 +35,25 @@ window.PROJECTS = [
     accent: ""
   },
   {
+    name: "Chicago Web Hunter",
+    featured: true,
+    blurb:
+      "An automated security-auditing platform that finds vulnerabilities in web, embedded, and industrial systems so you don't have to pentest by hand — run it as a pre-deployment gate to prove code is secure before it ships to production, or point it at a live target to surface real issues and generate proof-of-concept exploit payloads. It answers two questions about an app or codebase: is it exploitable, and is it trustworthy?",
+    highlights: [
+      "Bespoke SAST + DAST + a Kali “second opinion” (built): a custom static analyzer (SAST) reads source code for 88 classes of vulnerability — SQLi, RCE, XSS, broken authentication and access control (the OWASP Top 10 and well beyond) — across six languages; a dynamic verifier (DAST) then confirms which findings are actually exploitable against a running instance and produces PoC payloads; and it remotely scripts a Kali Linux VM over SSH to run industry-standard tools (wpscan, nuclei, sqlmap, OWASP ZAP) as an independent cross-check. All three merge into one ranked, CWE-mapped report.",
+      "Built for signal, not noise (built): most scanners bury you in false positives — this one ranks by confidence, knows which files are tests or third-party code, recognizes existing safeguards, and measures its own recall against a benchmark of known-vulnerable apps. Proven end-to-end in a home lab, confirming live vulnerabilities in OWASP Juice Shop and catching a known-vulnerable WordPress plugin at every layer.",
+      "Safe by design (built): the static scanner never runs, imports, or builds the code it inspects and treats every project as hostile input; the live DAST and Kali modes only run against targets you own and explicitly authorize. Container and git-history scanning, professional report exports (SARIF/HTML/PDF), a CI security gate, and a 400+-test suite.",
+      "Trust analysis (in development): a separate mode with a different question — not “is there an accidental bug” but “is this code a backdoor?” — targeting the compromised-maintainer and malicious-dependency attacks that have hit major open-source packages (axios, xz-utils), using YARA malware signatures, provenance checks, and behavioral analysis.",
+      "Roadmap: industrial and IoT targets — PLCs and SCADA/smart-factory software, plus the cheap, rarely-patched web servers inside consumer smart-home devices; per-dependency supply-chain scanning; and known-CVE regression testing of real software on restorable VMs."
+    ],
+    tags: ["Python", "SAST", "DAST", "OWASP Top 10", "Kali Linux", "Penetration Testing", "PoC Exploit Generation", "YARA", "Supply-Chain Security", "SCADA / ICS", "IoT Security", "CWE / MITRE ATT&CK"],
+    link: null,
+    note: "Not yet publicly released — get in touch for a walkthrough or demo.",
+    image: "img/projects/chicago_web_hunter.svg",
+    icon: "fa-solid fa-crosshairs",
+    accent: "rose"
+  },
+  {
     name: "MTS2 — Metrics & Tracking System 2",
     featured: false,
     blurb:

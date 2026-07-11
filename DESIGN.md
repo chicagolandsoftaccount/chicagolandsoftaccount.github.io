@@ -130,7 +130,7 @@ on small ones.
 | **Hero** | Mono kicker → oversized serif name → serif statement → text-link CTAs → figure strip → status line |
 | **About** | Asymmetric 1.7fr / 1fr: lead paragraph + prose beside a typographic education list under a bold top-rule label |
 | **Experience** | Résumé rows: a fixed mono date/kind column beside role · org, dash bullets, a mono tag line; `minmax(0,1fr)` so long text never overflows |
-| **Projects** | One flagship **editorial spread** (image + write-up) followed by an **indexed catalogue list** — numbered rows with title, blurb, tags, link, and a small thumbnail |
+| **Projects** | Flagship **editorial spreads** (title, then a prominent screenshot beside the write-up) followed by an **indexed catalogue list** — numbered rows with title, blurb, tags, link, and a screenshot. Cards use CSS grid areas so both flagships and rows reflow to `title → image → body` on narrow viewports. Projects with no screenshot get a flat, monochrome placeholder tile keyed to their icon (never a coloured/gradient tile) |
 | **Skills** | Two-column typographic rows: serif category, comma-separated items as flowing text — no chips, no icons |
 | **Contact** | Left-aligned serif statement with the email as an oversized underlined link |
 
@@ -217,7 +217,7 @@ clientWidth` at 390px).
 |------------|--------|
 | `≤ 880px` | Nav collapses to the clip-reveal drawer |
 | `≤ 820px` | About stacks to one column |
-| `≤ 760px` | Flagship spread stacks (image first); catalogue rows reflow |
+| `≤ 760px` | Every project card stacks to `title → image → body` (full-width screenshot); catalogue rows reflow |
 | `≤ 680px` | Experience & skills rows stack; date column becomes a row |
 | `≤ 640px` | Footer stacks |
 | `≤ 540px` | Hero CTAs full-width; figures two-up |
@@ -250,7 +250,7 @@ index.html         section shells + ids (the SPA frame)
 css/site.css       the entire design system (this document made real)
 data/*.js          content as globals: PROFILE, EXPERIENCE, PROJECTS, SKILLS
 js/render.js       builds all section markup from the data globals
-js/router.js       hash routing, reveal/count-up replay, deep-link flash
+js/router.js       hash routing (#route or #route/anchor), reveal/count-up replay, deep-link flash
 js/search.js       client-side index over the data
 js/carousel.js     manual prev/next/dots for multi-image project cards
 js/lightbox.js     project image viewer

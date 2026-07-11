@@ -11,7 +11,6 @@
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var views = {}, navLinks = {}, order = [];
   var titleBase = document.title;
-  var pendingAnchor = null;
 
   function collect() {
     Array.prototype.forEach.call(document.querySelectorAll('[data-view]'), function (v) {
@@ -23,10 +22,14 @@
     });
   }
 
-  function currentRoute() {
-    var h = (location.hash || '').replace(/^#\/?/, '').split('/')[0];
-    return views[h] ? h : 'home';
+  // Hash shape is #<route> or #<route>/<anchorId> (e.g. #projects/proj-1),
+  // so a project/experience card is directly linkable and bookmarkable.
+  function parseHash() {
+    var seg = (location.hash || '').replace(/^#\/?/, '').split('/');
+    return { route: views[seg[0]] ? seg[0] : 'home', anchor: seg[1] || null };
   }
+
+  function currentRoute() { return parseHash().route; }
 
   /* Count-up animation (per-view, replays on each visit) */
   function animateCount(elm) {
@@ -69,7 +72,7 @@
     });
   }
 
-  function show(name) {
+  function show(name, anchor) {
     name = views[name] ? name : 'home';
     order.forEach(function (n) {
       var active = n === name;
@@ -86,20 +89,22 @@
     window.scrollTo(0, 0);
     replayReveals(views[name]);
 
-    if (pendingAnchor) { flash(pendingAnchor); pendingAnchor = null; }
+    if (anchor) flash(anchor);
     document.dispatchEvent(new CustomEvent('route:changed', { detail: { route: name } }));
   }
 
+  function showHash() { var p = parseHash(); show(p.route, p.anchor); }
+
   function go(route, anchorId) {
-    pendingAnchor = anchorId || null;
-    if (currentRoute() === route) show(route);     // already here → re-show (applies anchor)
-    else location.hash = '#' + route;              // triggers hashchange → show()
+    var target = '#' + route + (anchorId ? '/' + anchorId : '');
+    if (location.hash === target) show(route, anchorId); // same hash → no hashchange, apply now
+    else location.hash = target;                         // triggers hashchange → showHash()
   }
 
   function init() {
     collect();
-    window.addEventListener('hashchange', function () { show(currentRoute()); });
-    show(currentRoute());
+    window.addEventListener('hashchange', showHash);
+    showHash();
   }
 
   window.Router = { go: go, current: currentRoute };
